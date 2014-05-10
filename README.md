@@ -31,7 +31,7 @@ Run `grunt` for generating HTML file and preview it:
 grunt
 ````
 
-See [Gruntfile.js](./Gruntfile.js) and edit it for your convenience.  
+See `Gruntfile.js` and edit it for your convenience.  
 For details: [grunt-markdown](https://github.com/treasonx/grunt-markdown/blob/master/README.md).
 
 
