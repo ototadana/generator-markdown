@@ -26,6 +26,18 @@ module.exports = function(grunt) {
         XUNIT_FILE: 'testresults/xunit.xml'
       },
     },
+    webdriver: {
+      options: {
+        desiredCapabilities: {
+          browserName: 'chrome'
+        },
+        reporter: 'XUnit',
+        output: 'testresults/e2e.xml'
+      },
+      test: {
+        tests: ['test/e2e/*.js']
+      }
+    },
     mochaTest: {
       options: {
         reporter: 'xunit-file',
@@ -42,12 +54,15 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
+  grunt.registerTask('e2e', [
+    'webdriver'
+  ]);
+
   grunt.registerTask('default', [
     'jshint:all',
     'jshint:test',
     'test'
   ]);
-
 
   require('mkdirp').sync('testresults');
 };

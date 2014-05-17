@@ -1,40 +1,14 @@
 /*global describe, beforeEach, it */
 'use strict';
-var path = require('path');
 var fs = require('fs');
 var helpers = require('yeoman-generator').test;
 var mkdirp = require('mkdirp');
 var exec = require('child_process').exec;
+var setupWorkspace = require('./setup-workspace.js');
 
 describe('markdown generator', function () {
   beforeEach(function (done) {
-    var dir = path.join(__dirname, 'temp');
-    fs.exists(path.join(dir, 'node_modules'), function(exists) {
-      if(exists) {
-        process.chdir(dir);
-        done();
-      } else {
-        helpers.testDirectory(dir, function (err) {
-          if (err) {
-            return done(err);
-          }
-
-          this.app = helpers.createGenerator('markdown:app', [
-            '../../app'
-          ]);
-
-          helpers.mockPrompt(this.app, {'someOption': true});
-
-          this.app.options['skip-install'] = true;
-          var app = this.app;
-          this.app.run({}, function () {
-            app.installDependencies(function () {
-              done();
-            });
-          });
-        }.bind(this));
-      }
-    }.bind(this));
+    setupWorkspace('../../app', done);
   });
 
   it('creates expected files', function (done) {
