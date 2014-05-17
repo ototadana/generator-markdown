@@ -5,10 +5,10 @@
   "license": "MIT",
   "main": "app/index.js",
   "repository": {
-    "type": "git", 
-    "url" : "https://github.com/ototadana/generator-markdown.git"
+    "type": "git",
+    "url": "https://github.com/ototadana/generator-markdown.git"
   },
-  "homepage" : "https://github.com/ototadana/generator-markdown",
+  "homepage": "https://github.com/ototadana/generator-markdown",
   "bugs": {
     "url": "https://github.com/ototadana/generator-markdown/issues"
   },
@@ -27,7 +27,8 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator", "markdown"
+    "yeoman-generator",
+    "markdown"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",
@@ -43,7 +44,9 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-protractor-runner": "^0.2.4",
     "grunt-mocha-test": "^0.10.2",
-    "mkdirp": "^0.5.0"
+    "mkdirp": "^0.5.0",
+    "xunit-file": "0.0.5",
+    "grunt-env": "^0.4.1"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"

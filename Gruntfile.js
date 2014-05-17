@@ -18,12 +18,18 @@ module.exports = function(grunt) {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/*.js']
+        src: ['test/*.js', 'test/e2e/*.js']
       }
+    },
+    env: {
+      test: {
+        XUNIT_FILE: 'testresults/xunit.xml'
+      },
     },
     mochaTest: {
       options: {
-        timeout:0
+        reporter: 'xunit-file',
+        timeout: 0
       },
       test: {
         src: ['test/*.js']
@@ -31,9 +37,17 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('test', [
+    'env:test',
+    'mochaTest'
+  ]);
+
   grunt.registerTask('default', [
     'jshint:all',
     'jshint:test',
-    'mochaTest'
+    'test'
   ]);
+
+
+  require('mkdirp').sync('testresults');
 };
